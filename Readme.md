@@ -1,6 +1,8 @@
 ![Shadowsocks](https://github.com/teddysun/shadowsocks_install/raw/master/shadowsocks.png)
 # Auto install Shadowsocks Server
 
+# Clone https://github.com/teddysun/shadowsocks_install
+
 shadowsocks.sh
 ===============
 * Description: Auto Install Shadowsocks(Python) Server for CentOS/Debian/Ubuntu
