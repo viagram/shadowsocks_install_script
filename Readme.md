@@ -1,7 +1,7 @@
 ![Shadowsocks](https://github.com/teddysun/shadowsocks_install/raw/master/shadowsocks.png)
 # Auto install Shadowsocks Server
 
-# Clone https://github.com/teddysun/shadowsocks_install
+# Clone The: https://github.com/teddysun/shadowsocks_install
 
 shadowsocks.sh
 ===============
