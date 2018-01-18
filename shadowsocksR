@@ -20,8 +20,8 @@ CONF=/etc/shadowsocks.json
 RETVAL=0
 
 check_running(){
-    PID=`ps -ef | grep -v grep | grep -i "${BIN}" | awk '{print $2}'`
-    if [ ! -z $PID ]; then
+    PID=$(ps -ef | grep -v grep | grep -i "${BIN}" | awk '{print $2}')
+    if [[ -n "${PID}" ]]; then
         return 0
     else
         return 1
@@ -29,30 +29,29 @@ check_running(){
 }
 
 do_start(){
-    check_running
-    if [ $? -eq 0 ]; then
+    if check_running; then
         echo "$NAME (pid $PID) is already running..."
+        RETVAL=0
         exit 0
     else
-        $BIN -c $CONF -d start
-        RETVAL=$?
-        if [ $RETVAL -eq 0 ]; then
+        if $BIN -c $CONF -d start; then
             echo "Starting $NAME success"
+            RETVAL=0
         else
             echo "Starting $NAME failed"
+            RETVAL=1
         fi
     fi
 }
 
 do_stop(){
-    check_running
-    if [ $? -eq 0 ]; then
-        $BIN -c $CONF -d stop
-        RETVAL=$?
-        if [ $RETVAL -eq 0 ]; then
+    if check_running; then
+        if $BIN -c $CONF -d stop; then
             echo "Stopping $NAME success"
+            RETVAL=0
         else
             echo "Stopping $NAME failed"
+            RETVAL=1
         fi
     else
         echo "$NAME is stopped"
@@ -61,8 +60,7 @@ do_stop(){
 }
 
 do_status(){
-    check_running
-    if [ $? -eq 0 ]; then
+    if check_running; then
         echo "$NAME (pid $PID) is running..."
     else
         echo "$NAME is stopped"
@@ -72,6 +70,7 @@ do_status(){
 
 do_restart(){
     do_stop
+    sleep 0.5
     do_start
 }
 
