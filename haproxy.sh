@@ -25,19 +25,19 @@ rootness(){
 }
 
 checkos(){
-    if [[ -f /etc/redhat-release ]];then
+    if [[ -f /etc/redhat-release ]]; then
         OS=CentOS
-    elif cat /etc/issue | grep -q -E -i "debian";then
+    elif cat /etc/issue | grep -q -E -i "debian"; then
         OS=Debian
-    elif cat /etc/issue | grep -q -E -i "ubuntu";then
+    elif cat /etc/issue | grep -q -E -i "ubuntu"; then
         OS=Ubuntu
-    elif cat /etc/issue | grep -q -E -i "centos|red hat|redhat";then
+    elif cat /etc/issue | grep -q -E -i "centos|red hat|redhat"; then
         OS=CentOS
-    elif cat /proc/version | grep -q -E -i "debian";then
+    elif cat /proc/version | grep -q -E -i "debian"; then
         OS=Debian
-    elif cat /proc/version | grep -q -E -i "ubuntu";then
+    elif cat /proc/version | grep -q -E -i "ubuntu"; then
         OS=Ubuntu
-    elif cat /proc/version | grep -q -E -i "centos|red hat|redhat";then
+    elif cat /proc/version | grep -q -E -i "centos|red hat|redhat"; then
         OS=CentOS
     else
         echo "Not supported OS, Please reinstall OS and try again."
@@ -134,13 +134,13 @@ function pre_install(){
 # Config haproxy
 config_haproxy(){
     # Config DNS nameserver
-    if ! grep -q "8.8.8.8" /etc/resolv.conf;then
+    if ! grep -q "8.8.8.8" /etc/resolv.conf; then
         cp -p /etc/resolv.conf /etc/resolv.conf.bak
         echo "nameserver 8.8.8.8" > /etc/resolv.conf
         echo "nameserver 8.8.4.4" >> /etc/resolv.conf
     fi
 
-    if [ -f /etc/haproxy/haproxy.cfg ];then
+    if [ -f /etc/haproxy/haproxy.cfg ]; then
         cp -p /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak
     fi
 
@@ -172,7 +172,7 @@ EOF
 
 install(){
     # Install haproxy
-    if [ "${OS}" == 'CentOS' ];then
+    if [ "${OS}" == 'CentOS' ]; then
         yum install -y haproxy
     else
         apt-get -y update

@@ -86,17 +86,17 @@ function pre_install(){
 
 # Download latest NodeJS
 function download_files(){
-    if [ -f node-${NODEJS_VER}.tar.gz ];then
+    if [ -f node-${NODEJS_VER}.tar.gz ]; then
         echo "node-${NODEJS_VER}.tar.gz [found]"
     else
-        if ! wget https://nodejs.org/dist/${NODEJS_VER}/node-${NODEJS_VER}.tar.gz;then
+        if ! wget https://nodejs.org/dist/${NODEJS_VER}/node-${NODEJS_VER}.tar.gz; then
             echo "Failed to download node-${NODEJS_VER}.tar.gz"
             exit 1
         fi
     fi
     # Untar Nodejs file
     tar -zxf node-${NODEJS_VER}.tar.gz
-    if [ $? -eq 0 ];then
+    if [ $? -eq 0 ]; then
         cd $cur_dir/node-${NODEJS_VER}/
     else
         echo ""
@@ -137,7 +137,7 @@ function iptables_set(){
 # Install 
 function install(){
     # Build and Install Nodejs
-    if [ ! -s /usr/local/bin/npm ];then
+    if [ ! -s /usr/local/bin/npm ]; then
         ./configure
         make && make install
     fi
@@ -217,7 +217,7 @@ function uninstall_shadowsocks_nodejs(){
         npm uninstall shadowsocks
         rm -f /usr/local/bin/sslocal
         rm -f /usr/local/bin/ssserver
-        if [ -f /etc/rc.d/rc.local.bak ];then
+        if [ -f /etc/rc.d/rc.local.bak ]; then
             rm -f /etc/rc.d/rc.local
             mv /etc/rc.d/rc.local.bak /etc/rc.d/rc.local
         fi
@@ -233,12 +233,12 @@ action=$1
 case "$action" in
 install)
     install_shadowsocks_nodejs
-    ;;
+    ;
 uninstall)
     uninstall_shadowsocks_nodejs
-    ;;
+    ;
 *)
     echo "Arguments error! [${action} ]"
     echo "Usage: `basename $0` {install|uninstall}"
-    ;;
+    ;
 esac

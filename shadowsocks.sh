@@ -279,7 +279,7 @@ install(){
     # Install Shadowsocks
     cd ${cur_dir}
     unzip -q shadowsocks-master.zip
-    if [ $? -ne 0 ];then
+    if [ $? -ne 0 ]; then
         echo "unzip shadowsocks-master.zip failed! please check unzip command."
         install_cleanup
         exit 1
@@ -377,9 +377,9 @@ action=$1
 case "$action" in
     install|uninstall)
     ${action}_shadowsocks
-    ;;
+    ;
     *)
     echo "Arguments error! [${action}]"
     echo "Usage: `basename $0` {install|uninstall}"
-    ;;
+    ;
 esac
