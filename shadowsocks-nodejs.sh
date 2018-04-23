@@ -233,12 +233,12 @@ action=$1
 case "$action" in
 install)
     install_shadowsocks_nodejs
-    ;
+    ;;
 uninstall)
     uninstall_shadowsocks_nodejs
-    ;
+    ;;
 *)
     echo "Arguments error! [${action} ]"
     echo "Usage: `basename $0` {install|uninstall}"
-    ;
+    ;;
 esac
