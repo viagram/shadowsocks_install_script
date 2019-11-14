@@ -15,8 +15,8 @@
 # Author: Teddysun <i@teddysun.com>
 
 NAME=ShadowsocksR
-BIN=/usr/local/shadowsocks/shadowsocks/server.py
-CONF=/etc/shadowsocks.json
+BIN=/usr/local/shadowsocksr/shadowsocks/server.py
+CONF=/etc/shadowsocksr.json
 RETVAL=0
 
 check_running(){
